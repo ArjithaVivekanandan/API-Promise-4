@@ -21,6 +21,8 @@ Missing.innerHTML="Not Available!!";
  {
    content.innerHTML="";
   var search_str=document.getElementById("search_text").value;
+  if(search_str)
+  {
   var data= await (await fetch("https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+search_str+"&api-key=6POmoe9CA21Gy7RhacgPSr7MXfjT5yFZ")).json();
   if(data.response.docs.length > 0)
   {
@@ -30,8 +32,12 @@ Missing.innerHTML="Not Available!!";
   }
   else
   document.getElementById("content").append(Missing);  
+ 
+}
+else{
+    document.getElementById("content").append("Please Enter Text to Search!!")
+}
  }
-
  function handleResponse(data) {
   
   try{
